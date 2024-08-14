@@ -1,0 +1,45 @@
+@use 'variables' as vars;
+
+// Screen adapters
+@mixin phone {
+	@media (min-width: vars.$phone) {
+		@content 
+	}
+}
+
+@mixin tablet {
+	@media (min-width: vars.$tablet) {
+		@content 
+	}
+}
+
+@mixin desktop {
+	@media (min-width: vars.$desktop) {
+		@content 
+	}
+}
+
+@mixin desktopXL {
+	@media (min-width: vars.$desktopXL) {
+		@content 
+	}
+}
+
+// Container modifiers
+@mixin generic-container {
+	width: 95%;
+	max-width: 120rem;
+	margin: 0 auto;
+}
+
+@mixin grid($columns : 1, $gap : 5rem) {
+	display: grid;
+	grid-template-columns: repeat($columns, 1fr);
+	gap: $gap;
+}
+
+@mixin clean-list-styles {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}

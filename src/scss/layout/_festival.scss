@@ -1,0 +1,23 @@
+@use 'base/variables' as vars;
+@use 'base/mixins' as mixins;
+
+.about-festival {
+	@include mixins.generic-container();
+
+	@include mixins.tablet() {
+		@include mixins.grid(2, 5rem);
+	}
+}
+
+.festival-content {
+	margin-top: 3rem;
+
+	h2 {
+		margin-bottom: 2rem;
+	}
+
+	.date {
+		color: vars.$green;
+		font-weight: 700;
+	}
+}
