@@ -34,12 +34,18 @@ const closeImageModal = () => {
 // Open gallery imagen
 const openImgModal = index => {
 	// Create image element
-	const img = document.createElement('IMG');
-	img.width = "1500"
-	img.height = "1000"
-	img.loading = "lazy"
-	img.src = `src/img/gallery/full/${index}.jpg`;
-	img.alt = "Imagen Galeria";
+	// const img = document.createElement('IMG');
+	// img.width = "1500"
+	// img.height = "1000"
+	// img.loading = "lazy"
+	// img.src = `src/img/gallery/full/${index}.jpg`;
+	// img.alt = "Imagen Galeria";
+	const picture = document.createElement('PICTURE');
+	picture.innerHTML = `
+    	<source srcset="build/img/gallery/full/${index}.avif" type="image/avif">
+    	<source srcset="build/img/gallery/full/${index}.webp" type="image/webp">
+    	<img loading="lazy" width="200" height="300" src="build/img/gallery/full/${index}.jpg" alt="imagen galeria">
+	`;
 
 	
 	// Generate close button
@@ -54,7 +60,7 @@ const openImgModal = index => {
 	modal.onclick = closeImageModal;
 
 	// Add elements to modal
-	modal.appendChild(img);
+	modal.appendChild(picture);
 	modal.appendChild(btnClose);
 
 	// Disable scroll
@@ -71,17 +77,23 @@ const createGallery = () => {
 
 	const imageQuantity = 16;
 	for( let i = 1; i <= imageQuantity; i++ ){
-		const img = document.createElement('IMG');
-		img.width = "300"
-		img.height = "200"
-		img.loading = "lazy"
-		img.src = `src/img/gallery/thumb/${i}.jpg`;
-		img.alt = "Imagen Galeria";
+		// const img = document.createElement('IMG');
+		// img.width = "300"
+		// img.height = "200"
+		// img.loading = "lazy"
+		// img.src = `src/img/gallery/thumb/${i}.jpg`;
+		// img.alt = "Imagen Galeria";
+		const picture = document.createElement('PICTURE');
+		picture.innerHTML = `
+			<source srcset="build/img/gallery/thumb/${i}.avif" type="image/avif">
+			<source srcset="build/img/gallery/thumb/${i}.webp" type="image/webp">
+			<img loading="lazy" width="200" height="300" src="build/img/gallery/thumb/${i}.jpg" alt="imagen galeria">
+		`;
 
 		// Event handler
-		img.onclick = () => openImgModal(i);
+		picture.onclick = () => openImgModal(i);
 
-		gallery.appendChild( img );
+		gallery.appendChild( picture );
 	}
 }
 
@@ -111,6 +123,7 @@ const highlightSection = () => {
 		})
 	})
 }
+
 
 // Customize the way the nav bar scrolls to the sections 
 const scrollNav = () => {
