@@ -35,6 +35,9 @@ const closeImageModal = () => {
 const openImgModal = index => {
 	// Create image element
 	const img = document.createElement('IMG');
+	img.width = "1500"
+	img.height = "1000"
+	img.loading = "lazy"
 	img.src = `src/img/gallery/full/${index}.jpg`;
 	img.alt = "Imagen Galeria";
 
@@ -69,7 +72,10 @@ const createGallery = () => {
 	const imageQuantity = 16;
 	for( let i = 1; i <= imageQuantity; i++ ){
 		const img = document.createElement('IMG');
-		img.src = `src/img/gallery/full/${i}.jpg`;
+		img.width = "300"
+		img.height = "200"
+		img.loading = "lazy"
+		img.src = `src/img/gallery/thumb/${i}.jpg`;
 		img.alt = "Imagen Galeria";
 
 		// Event handler
